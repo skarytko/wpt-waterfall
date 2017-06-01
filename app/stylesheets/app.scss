@@ -1,0 +1,168 @@
+$dns-color: rgb(84, 143, 149);
+
+html, body, #app {
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+  padding-top: 70px;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* align items in Main Axis */
+  align-items: stretch; /* align items in Cross Axis */
+  align-content: stretch; /* Extra space in Cross Axis */
+  width: 100%;
+  height: 100%;
+}
+.filter-bar {
+  width: 100%;
+}
+.waterfall-search {
+  input {
+    box-shadow: none;
+    border-right-width: 0px;
+
+    &:focus {
+      outline: none !important;
+    }
+  }
+  .input-group-addon {
+    background-color: transparent;
+    cursor: pointer;
+  }
+}
+.waterfall-container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin: auto 15px;
+}
+.waterfall-container-1, .waterfall-container-2 {
+  flex: 1;
+  overflow-x: hidden;
+}
+.waterfall-container-2 {
+  margin-left: 5px;
+}
+
+.table-waterfall {
+  width: 100%;
+  table-layout: fixed;
+  white-space: nowrap;
+
+  td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-width: 0px !important;
+    white-space: nowrap;
+  }
+  .count {
+    width: 3%;
+    text-align: right;
+  }
+  .secure {
+    width: 2%;
+  }
+  .file, .host {
+    width: 10%;
+  }
+  .type, .size, .status {
+    width: 5%;
+  }
+  .size {
+    text-align: right;
+  }
+
+  th.size {
+    text-align: left;
+  }
+
+  .timeline {
+    width: 60%;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    position: relative;
+    border-width-left: 1px;
+    border-width-right: 1px;
+
+    .tick {
+    	position: absolute;
+    	top: -1px;
+      width: 1px;
+    	background-color: rgb(221, 221, 221);
+    	height: 31px;
+    	z-index: 1000;
+      vertical-align: text-bottom;
+    }
+
+    .tick-label {
+      position: absolute;
+      padding: 5px;
+      bottom: 0px;
+      z-index: 1000;
+      font-size: 12px;
+      font-weight: normal;
+    }
+
+    .event {
+      position: absolute;
+      top: -1px;
+      width: 2px;
+      height: 31px;
+      z-index: 5000;
+
+      &.start-render {
+        background-color: #ff0000;
+      }
+      &.dom-interactive {
+        background-color: #ffff00;
+      }
+      &.on-load {
+        background-color: #aaaaff;
+      }
+      &.document-complete {
+        background-color: #0000ff;
+      }
+    }
+
+    .timings {
+      height: 20px;
+
+    	.timing {
+    		position: relative;
+    		display: block;
+    		float: left;
+    		z-index: 1001;
+    	}
+    	.timing-dns {
+    		margin-top: 5px;
+    		height: 10px;
+    		background-color: $dns-color;
+    	}
+    	.timing-connect {
+    		margin-top: 5px;
+    		height: 10px;
+    		background-color: rgb(228, 150, 82);
+    	}
+    	.timing-ssl {
+    		margin-top: 5px;
+    		height: 10px;
+    		background-color: rgb(188, 110, 216);
+    	}
+    	.timing-wait {
+    		background-color: rgb(198, 210, 226);
+    		height: 20px;
+    	}
+    	.timing-receive {
+    		background-color: rgb(146, 180, 226);
+    		height: 20px;
+    	}
+    }
+  }
+}
